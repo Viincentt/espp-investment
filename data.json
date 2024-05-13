@@ -1,4 +1,17 @@
 {
+  "Transunion": {
+    "ticker": "TRU",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ],
+  },
   "datadog": {
     "ticker": "DDOG",
     "dates": [
