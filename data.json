@@ -1,0 +1,642 @@
+{
+  "datadog": {
+    "ticker": "DDOG",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Charles Schwab": {
+    "ticker": "SCHW",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Factset": {
+    "ticker": "FDS",
+    "dates": [
+      {
+        "month": 3,
+        "day": 1
+      },
+      {
+        "month": 6,
+        "day": 1
+      },
+      {
+        "month": 9,
+        "day": 1
+      },
+      {
+        "month": 12,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Seagate": {
+    "ticker": "STX",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Teradata": {
+    "ticker": "TDC",
+    "dates": [
+      {
+        "month": 2,
+        "day": 28
+      },
+      {
+        "month": 8,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Cadence Design Systems": {
+    "ticker": "CDNS",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Texas Instruments": {
+    "ticker": "TXN",
+    "dates": [
+      {
+        "month": 3,
+        "day": 1
+      },
+      {
+        "month": 6,
+        "day": 1
+      },
+      {
+        "month": 9,
+        "day": 1
+      },
+      {
+        "month": 12,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Applied Materials": {
+    "ticker": "AMAT",
+    "dates": [
+      {
+        "month": 2,
+        "day": 28
+      },
+      {
+        "month": 8,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "LiveRamp": {
+    "ticker": "RAMP",
+    "dates": [
+      {
+        "month": 5,
+        "day": 31
+      },
+      {
+        "month": 11,
+        "day": 30
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Splunk": {
+    "ticker": "SPLK",
+    "dates": [
+      {
+        "month": 6,
+        "day": 15
+      },
+      {
+        "month": 12,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Nike": {
+    "ticker": "NKE",
+    "dates": [
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 9,
+        "day": 30
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Juniper Networks": {
+    "ticker": "JNPR",
+    "dates": [
+      {
+        "month": 1,
+        "day": 31
+      },
+      {
+        "month": 7,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "intel": {
+    "ticker": "INTC",
+    "dates": [
+      {
+        "month": 2,
+        "day": 19
+      },
+      {
+        "month": 8,
+        "day": 19
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "hubspot": {
+    "ticker": "HUBS",
+    "dates": [
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "HPE": {
+    "ticker": "HPE",
+    "dates": [
+      {
+        "month": 4,
+        "day": 30
+      },
+      {
+        "month": 10,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "HP": {
+    "ticker": "HPQ",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Epam": {
+    "ticker": "EPAM",
+    "dates": [
+      {
+        "month": 4,
+        "day": 30
+      },
+      {
+        "month": 10,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Akamai": {
+    "ticker": "AKAM",
+    "dates": [
+      {
+        "month": 6,
+        "day": 1
+      },
+      {
+        "month": 12,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "NetApp": {
+    "ticker": "NTAP",
+    "dates": [
+      {
+        "month": 5,
+        "day": 31
+      },
+      {
+        "month": 11,
+        "day": 30
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Nvidia": {
+    "ticker": "NVDA",
+    "dates": [
+      {
+        "month": 2,
+        "day": 28
+      },
+      {
+        "month": 8,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Autodesk": {
+    "ticker": "ADSK",
+    "dates": [
+      {
+        "month": 10,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Workday": {
+    "ticker": "WDAY",
+    "dates": [
+      {
+        "month": 6,
+        "day": 1
+      },
+      {
+        "month": 12,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Paypal": {
+    "ticker": "PYPL",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "ElectronicArts": {
+    "ticker": "EA",
+    "dates": [
+      {
+        "month": 2,
+        "day": 15
+      },
+      {
+        "month": 8,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "ServiceNow": {
+    "ticker": "NOW",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Adobe": {
+    "ticker": "ADBE",
+    "dates": [
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Ebay": {
+    "ticker": "EBAY",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Tesla": {
+    "ticker": "TSLA",
+    "dates": [
+      {
+        "month": 3,
+        "day": 1
+      },
+      {
+        "month": 9,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Microsoft": {
+    "ticker": "MSFT",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-04"
+  },
+  "Apple": {
+    "ticker": "AAPL",
+    "dates": [
+      {
+        "month": 1,
+        "day": 31
+      },
+      {
+        "month": 7,
+        "day": 31
+      }
+    ],
+    "download": "2023-12-04"
+  },
+  "Lyft": {
+    "ticker": "LYFT",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Oracle": {
+    "ticker": "ORCL",
+    "dates": [
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-04"
+  },
+  "DocuSign": {
+    "ticker": "DOCU",
+    "dates": [
+      {
+        "month": 4,
+        "day": 10
+      },
+      {
+        "month": 10,
+        "day": 10
+      }
+    ],
+    "download": "2023-12-05"
+  },
+  "Okta": {
+    "ticker": "OKTA",
+    "dates": [
+      {
+        "month": 6,
+        "day": 20
+      },
+      {
+        "month": 12,
+        "day": 20
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Equinix": {
+    "ticker": "EQIX",
+    "dates": [
+      {
+        "month": 2,
+        "day": 15
+      },
+      {
+        "month": 8,
+        "day": 15
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Accenture": {
+    "ticker": "ACN",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Motorola": {
+    "ticker": "MSI",
+    "dates": [
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 9,
+        "day": 30
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Salesforce": {
+    "ticker": "CRM",
+    "dates": [
+      {
+        "month": 6,
+        "day": 15
+      },
+      {
+        "month": 12,
+        "day": 15
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Block": {
+    "ticker": "SQ",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Comcast": {
+    "ticker": "CMCSA",
+    "dates": [
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Arista": {
+    "ticker": "ANET",
+    "dates": [
+      {
+        "month": 2,
+        "day": 15
+      },
+      {
+        "month": 8,
+        "day": 15
+      }
+    ],
+    "download": "2023-11-18"
+  },
+  "Udemy": {
+    "ticker": "UDMY",
+    "dates": [
+      {
+        "month": 5,
+        "day": 20
+      },
+      {
+        "month": 11,
+        "day": 20
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "CloudFare": {
+    "ticker": "NET",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ],
+    "download": "2023-12-30"
+  },
+  "Gitlab": {
+    "ticker": "GTLB",
+    "dates": [
+      {
+        "month": 5,
+        "day": 31
+      },
+      {
+        "month": 11,
+        "day": 30
+      }
+    ],
+    "download": "2023-12-30"
+  }
+}
