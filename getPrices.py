@@ -26,17 +26,12 @@ def main():
     )
 
     args = parser.parse_args()
-    SL, TP, price, limit = (
-        float(args.SL),
-        float(args.TP),
-        float(args.price),
-        float(args.limit),
-    )
+    SL, TP, price = float(args.SL), float(args.TP), float(args.price)
     if args.limit:
-        price *= 1 - limit
+        price *= 1 - float(args.limit)
     TP = price * (1 + TP)
     SL = price * (1 - SL)
-    print("Buy at", price, "Take Profit at", TP, "Stop Loss at", SL)
+    print("Buy at", price, "Take Profit at", round(TP, 2), "Stop Loss at", round(SL, 2))
 
 
 if __name__ == "__main__":
