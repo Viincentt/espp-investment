@@ -19,6 +19,13 @@ import numpy as np
                 {month: 8, day: 15}
             ]
         }
+        "":{
+            "ticker":"",
+            "dates":[
+            {"month":1, "day":1},
+            {"month":1, "day":1}
+            ]
+        },
 """
 
 DATEFORMAT = "%Y-%m-%d"
@@ -39,8 +46,7 @@ def plotIt(companyName, df, color):
 def stats(l):
     if len(l) < 2:
         # If series has less than 2 elements, return 0 as there's no increase
-        print(f"{0:15}", end=" " * 4)
-        return
+        return 0, 0, 0, 0
 
     maxIncrease = 0
     minValue = l.iloc[0]
@@ -58,62 +64,70 @@ def stats(l):
     sellAt = round(maxIncrease / lowValue, 2)
     nbDaysBuy = (l.index[lowValueIdx] - l.index[0]).days
     nbDaysSell = (l.index[highValueIdx] - l.index[lowValueIdx]).days
-    print(
-        f"{nbDaysBuy:2} {buyAt:3.2f} {nbDaysSell:2} {sellAt:3.2f}",
-        end=" " * 4,
-    )
+    return nbDaysBuy, buyAt, nbDaysSell, sellAt
 
 
 def printHeader(company):
-    print(company[TICKER] + ":", end=" ")
-
+    print(f"{company[TICKER]:>4}:", end=" ")
     for date in company[DATES]:
-        print(f"{date[DAY]:>8}-{calendar.month_name[date[MONTH]]}", end=" ")
+        print(f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^15}", end="   ")
     print()
 
 
 def getMask(mask, company, stock):
     printHeader(company)
     for year in range(2020, 2024):
+        # TODO fix manual range (default value)
         print(year, end=": ")
         for date in company[DATES]:
             esppDate = datetime(year, date[MONTH], date[DAY])
             curMask = (stock.index >= esppDate - timedelta(days=1)) & (
                 stock.index <= esppDate + timedelta(days=60)
             )
-            stats(stock.loc[curMask, ADJCLOSE])
+            a, b, c, d = stats(stock.loc[curMask, ADJCLOSE])
+            print(f"{a:2} {-b:4.0%} {c:2} {d:3.0%}", end="   ")
             mask |= curMask
         print()
     print()
     return mask
 
 
-def within2Months(company):
+def within(company, timeDuration):
     today = datetime.now()
-    two_months_ago = today - timedelta(days=60)
-    two_months_from_now = today + timedelta(days=60)
+    xTimeAgo = today - timedelta(days=1)
+    xTimeFromNow = today + timeDuration
     return any(
-        two_months_ago
-        <= datetime(today.year, date[MONTH], date[DAY])
-        <= two_months_from_now
-        or two_months_ago
-        <= datetime(today.year + 1, date[MONTH], date[DAY])
-        <= two_months_from_now
+        xTimeAgo <= datetime(today.year, date[MONTH], date[DAY]) <= xTimeFromNow
+        # this to check if the date might not be next year
+        or xTimeAgo <= datetime(today.year + 1, date[MONTH], date[DAY]) <= xTimeFromNow
         for date in company[DATES]
     )
 
 
+def neverDownloaded(company):
+    return DOWNLOAD not in company
+
+
+def lastDownloadOverOneYearAgo(company):
+    return datetime.strptime(
+        company[DOWNLOAD], DATEFORMAT
+    ) < datetime.today() - timedelta(weeks=52)
+
+
 def needToDownload(company):
     return (
-        DOWNLOAD not in company
-        or datetime.strptime(company[DOWNLOAD], DATEFORMAT)
-        < datetime.today() - timedelta(weeks=52)
+        neverDownloaded(company)
+        or lastDownloadOverOneYearAgo(company)
+        # TODO fix this shit below
         or any(
-            datetime.today() - timedelta(weeks=9)
-            < datetime(datetime.today().year, date[MONTH], date[DAY])
-            < datetime.strptime(company[DOWNLOAD], DATEFORMAT)
-            < datetime.today() - timedelta(days=1)
-            < datetime.today()
+            # 2 months ago
+            datetime.today() - timedelta(weeks=9) <
+            # company espp date
+            datetime(datetime.today().year, date[MONTH], date[DAY]) <
+            # last download
+            datetime.strptime(company[DOWNLOAD], DATEFORMAT) <
+            # today
+            datetime.today()
             for date in company[DATES]
         )
     )
@@ -123,13 +137,11 @@ def main():
     dataFilename = "data.json"
     with open(dataFilename) as file:
         companies = json.load(file)
-    numberCompanies = len(companies)
-    colors = iter(cm.rainbow(np.linspace(0, 1, numberCompanies)))
-    for _name in companies:
-        color = next(colors)
-        company = companies[_name]
+    # update if necessary
+    for _name, company in companies.items():
         csvName = "prices/" + company[TICKER] + ".csv"
         if needToDownload(company):
+            # TODO add CLI option to force download
             data = yf.download(company[TICKER])
             today = datetime.today().strftime(DATEFORMAT)
             companies[_name][DOWNLOAD] = today
@@ -137,14 +149,22 @@ def main():
                 json.dump(companies, file, indent=2)
             data.to_csv(csvName)
 
+    fromNow = timedelta(days=15)
+    companies = {
+        name: comp for name, comp in companies.items() if within(comp, fromNow)
+    }
+    colors = iter(cm.rainbow(np.linspace(0, 1, len(companies))))
+    # plot
+    for name, company in companies.items():
+        csvName = "prices/" + company[TICKER] + ".csv"
+        color = next(colors)
         # only plot/analyze if the company has an espp date within 2 months in the past or future
-        if within2Months(company):
-            stock = pd.read_csv(csvName, index_col=0, parse_dates=True)
-            # build mask + show stats
-            mask = getMask(pd.Series(False, index=stock.index), company, stock)
-            # plotIt ( maybe )
-            stock.loc[~mask, ADJCLOSE] = None
-            plotIt(company[TICKER], stock, color)
+        stock = pd.read_csv(csvName, index_col=0, parse_dates=True)
+        # build mask + show stats
+        mask = getMask(pd.Series(False, index=stock.index), company, stock)
+        # plotIt ( maybe )
+        stock.loc[~mask, ADJCLOSE] = None
+        plotIt(company[TICKER], stock, color)
 
     print("buy after n days with -x% and sell after m days with +y%.")
     plt.show()
