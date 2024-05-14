@@ -46,7 +46,7 @@ def plotIt(companyName, df, color):
 def stats(l):
     if len(l) < 2:
         # If series has less than 2 elements, return 0 as there's no increase
-        return 0, 0, 0, 0
+        return 0, 0, 0, 0, 0
 
     maxIncrease = 0
     minValue = l.iloc[0]
@@ -60,23 +60,36 @@ def stats(l):
         if l.iloc[i] < minValue:
             minValue = l.iloc[i]
             k = i
+
+    # max loss
+    maxDecrease, maxValue = 0, l.iloc[lowValueIdx]
+    for i in range(lowValueIdx + 1, highValueIdx):
+        if l.iloc[i] > maxValue:
+            maxValue = l.iloc[i]
+        else:
+            current_decrease = maxValue - l.iloc[i]
+            maxDecrease = max(maxDecrease, current_decrease)
     buyAt = 1 - round(lowValue / l.iloc[0], 2)
     sellAt = round(maxIncrease / lowValue, 2)
+    stopLoss = round(maxDecrease / maxValue, 2)
     nbDaysBuy = (l.index[lowValueIdx] - l.index[0]).days
     nbDaysSell = (l.index[highValueIdx] - l.index[lowValueIdx]).days
-    return nbDaysBuy, buyAt, nbDaysSell, sellAt
+    return nbDaysBuy, buyAt, nbDaysSell, sellAt, stopLoss
 
 
 def printHeader(company):
     print(f"{company[TICKER]:>4}:", end=" ")
     for date in company[DATES]:
-        print(f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^15}", end="   ")
+        print(
+            f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^20}", end="    "
+        )
     print()
 
 
-def getMask(mask, company, stock):
+def getMask(mask, company, stock, lookBack=6):
     printHeader(company)
-    for year in range(2020, 2024):
+    today = datetime.now()
+    for year in range(today.year - lookBack, today.year):
         # TODO fix manual range (default value)
         print(year, end=": ")
         for date in company[DATES]:
@@ -84,8 +97,8 @@ def getMask(mask, company, stock):
             curMask = (stock.index >= esppDate - timedelta(days=1)) & (
                 stock.index <= esppDate + timedelta(days=60)
             )
-            a, b, c, d = stats(stock.loc[curMask, ADJCLOSE])
-            print(f"{a:2} {-b:4.0%} {c:2} {d:3.0%}", end="   ")
+            a, b, c, d, e = stats(stock.loc[curMask, ADJCLOSE])
+            print(f"{a:2} {-b:4.0%} {c:2} {d:3.0%} {-e:4.0%}", end="    ")
             mask |= curMask
         print()
     print()
@@ -94,7 +107,7 @@ def getMask(mask, company, stock):
 
 def within(company, timeDuration):
     today = datetime.now()
-    xTimeAgo = today - timedelta(days=1)
+    xTimeAgo = today - timedelta(days=5)
     xTimeFromNow = today + timeDuration
     return any(
         xTimeAgo <= datetime(today.year, date[MONTH], date[DAY]) <= xTimeFromNow
@@ -166,7 +179,7 @@ def main():
         stock.loc[~mask, ADJCLOSE] = None
         plotIt(company[TICKER], stock, color)
 
-    print("buy after n days with -x% and sell after m days with +y%.")
+    print("buy after n days at -x% and sell after m days at +y% and accept -z% loss.")
     plt.show()
 
 
