@@ -34,11 +34,11 @@ DATES = "dates"
 DOWNLOAD = "download"
 MONTH = "month"
 DAY = "day"
-ADJCLOSE = "Adj Close"
+CLOSE = "Close"
 
 
 def plotIt(companyName, df, color):
-    ax = df[ADJCLOSE].plot(c=color, label=companyName)
+    ax = df[CLOSE].plot(c=color, label=companyName)
     lines, labels = ax.get_legend_handles_labels()
     ax.legend(lines, labels, loc="best")
 
@@ -86,18 +86,19 @@ def printHeader(company):
     print()
 
 
-def getMask(mask, company, stock, lookBack=6):
+def getMask(company, stock, lookBack=6):
     printHeader(company)
+    mask = pd.Series(False, index=stock.index)
     today = datetime.now()
     for year in range(today.year - lookBack, today.year):
-        # TODO fix manual range (default value)
         print(year, end=": ")
         for date in company[DATES]:
             esppDate = datetime(year, date[MONTH], date[DAY])
+            # TODO fix window range
             curMask = (stock.index >= esppDate - timedelta(days=1)) & (
                 stock.index <= esppDate + timedelta(days=60)
             )
-            a, b, c, d, e = stats(stock.loc[curMask, ADJCLOSE])
+            a, b, c, d, e = stats(stock.loc[curMask, CLOSE])
             print(f"{a:2} {-b:4.0%} {c:2} {d:3.0%} {-e:4.0%}", end="    ")
             mask |= curMask
         print()
@@ -107,7 +108,7 @@ def getMask(mask, company, stock, lookBack=6):
 
 def within(company, timeDuration):
     today = datetime.now()
-    xTimeAgo = today - timedelta(days=5)
+    xTimeAgo = today - timedelta(days=5)  # TODO here
     xTimeFromNow = today + timeDuration
     return any(
         xTimeAgo <= datetime(today.year, date[MONTH], date[DAY]) <= xTimeFromNow
@@ -117,71 +118,41 @@ def within(company, timeDuration):
     )
 
 
-def neverDownloaded(company):
-    return DOWNLOAD not in company
-
-
-def lastDownloadOverOneYearAgo(company):
-    return datetime.strptime(
-        company[DOWNLOAD], DATEFORMAT
-    ) < datetime.today() - timedelta(weeks=52)
-
-
-def needToDownload(company):
-    return (
-        neverDownloaded(company)
-        or lastDownloadOverOneYearAgo(company)
-        # TODO fix this shit below
-        or any(
-            # 2 months ago
-            datetime.today() - timedelta(weeks=9) <
-            # company espp date
-            datetime(datetime.today().year, date[MONTH], date[DAY]) <
-            # last download
-            datetime.strptime(company[DOWNLOAD], DATEFORMAT) <
-            # today
-            datetime.today()
-            for date in company[DATES]
-        )
-    )
-
-
 def main():
     dataFilename = "data.json"
-    with open(dataFilename) as file:
+    with open(dataFilename, "r") as file:
         companies = json.load(file)
-    # update if necessary
-    for _name, company in companies.items():
-        csvName = "prices/" + company[TICKER] + ".csv"
-        if needToDownload(company):
-            # TODO add CLI option to force download
-            data = yf.download(company[TICKER])
-            today = datetime.today().strftime(DATEFORMAT)
-            companies[_name][DOWNLOAD] = today
-            with open(dataFilename, "w") as file:
-                json.dump(companies, file, indent=2)
-            data.to_csv(csvName)
 
-    fromNow = timedelta(days=15)
+    fromNow = timedelta(days=15)  # TODO here
     companies = {
         name: comp for name, comp in companies.items() if within(comp, fromNow)
     }
     colors = iter(cm.rainbow(np.linspace(0, 1, len(companies))))
+
     # plot
     for name, company in companies.items():
-        csvName = "prices/" + company[TICKER] + ".csv"
         color = next(colors)
-        # only plot/analyze if the company has an espp date within 2 months in the past or future
-        stock = pd.read_csv(csvName, index_col=0, parse_dates=True)
+        # TODO period = ???
+        stock = yf.Ticker(company[TICKER]).history(period="10y")
+        stock.index = stock.index.tz_convert(None)
         # build mask + show stats
-        mask = getMask(pd.Series(False, index=stock.index), company, stock)
+        mask = getMask(company, stock)
         # plotIt ( maybe )
-        stock.loc[~mask, ADJCLOSE] = None
+        stock.loc[~mask, CLOSE] = None
         plotIt(company[TICKER], stock, color)
 
     print("buy after n days at -x% and sell after m days at +y% and accept -z% loss.")
     plt.show()
 
 
+# if ticker process that ticker
+# elif lookWindow process all tickers in window
+# else use default lookWindow
+
+# TODO add argument parser --stockTicker --lookWindow (may be more/less 2months)
+"""
+--ticker -t
+--analyzeStart default = 1
+"""
 if __name__ == "__main__":
     main()
