@@ -1,4 +1,583 @@
 {
+  "Viasat": {
+    "ticker": "VSAT",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Intuitive Surgical": {
+    "ticker": "ISRG",
+    "dates": [
+      {
+        "month": 1,
+        "day": 31
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Caci International": {
+    "ticker": "CACI",
+    "dates": [
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 9,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ]
+  },
+  "Zimmer Biomet": {
+    "ticker": "ZBH",
+    "dates": [
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ]
+  },
+  "UnitedHealth Group": {
+    "ticker": "UNH",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "NCR": {
+    "ticker": "VYX",
+    "dates": [
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 9,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ]
+  },
+  "Logitech": {
+    "ticker": "LOGI",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ]
+  },
+  "Adidas": {
+    "ticker": "ADS",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ]
+  },
+  "Progress": {
+    "ticker": "PRGS",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Dynatrace": {
+    "ticker": "DT",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ]
+  },
+  "Zuora": {
+    "ticker": "ZUO",
+    "dates": [
+      {
+        "month": 6,
+        "day": 14
+      },
+      {
+        "month": 12,
+        "day": 14
+      }
+    ]
+  },
+  "McKesson": {
+    "ticker": "MCK",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ]
+  },
+  "Paylocity": {
+    "ticker": "PCTY",
+    "dates": [
+      {
+        "month": 5,
+        "day": 16
+      },
+      {
+        "month": 11,
+        "day": 16
+      }
+    ]
+  },
+  "Tyler Technologies": {
+    "ticker": "TYL",
+    "dates": [
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 6,
+        "day": 30
+      },
+      {
+        "month": 9,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      }
+    ]
+  },
+  "SentinelOne": {
+    "ticker": "S",
+    "dates": [
+      {
+        "month": 1,
+        "day": 6
+      },
+      {
+        "month": 7,
+        "day": 6
+      }
+    ]
+  },
+  "Open Text": {
+    "ticker": "OTEX",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Parsons": {
+    "ticker": "PSN",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Global Payments": {
+    "ticker": "GPN",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ]
+  },
+  "Ring Central": {
+    "ticker": "RNG",
+    "dates": [
+      {
+        "month": 5,
+        "day": 13
+      },
+      {
+        "month": 11,
+        "day": 13
+      }
+    ]
+  },
+  "Ciena": {
+    "ticker": "CIEN",
+    "dates": [
+      {
+        "month": 5,
+        "day": 30
+      },
+      {
+        "month": 11,
+        "day": 30
+      }
+    ]
+  },
+  "John Deere": {
+    "ticker": "DE",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ]
+  },
+  "PTC": {
+    "ticker": "PTC",
+    "dates": [
+      {
+        "month": 1,
+        "day": 31
+      },
+      {
+        "month": 7,
+        "day": 31
+      }
+    ]
+  },
+  "Workiva": {
+    "ticker": "WK",
+    "dates": [
+      {
+        "month": 1,
+        "day": 15
+      },
+      {
+        "month": 7,
+        "day": 15
+      }
+    ]
+  },
+  "Keysight": {
+    "ticker": "KEYS",
+    "dates": [
+      {
+        "month": 5,
+        "day": 1
+      },
+      {
+        "month": 11,
+        "day": 1
+      }
+    ]
+  },
+  "Fastly": {
+    "ticker": "FSLY",
+    "dates": [
+      {
+        "month": 5,
+        "day": 21
+      },
+      {
+        "month": 11,
+        "day": 21
+      }
+    ]
+  },
+  "Garmin": {
+    "ticker": "GRMN",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "KLA Corporation": {
+    "ticker": "KLAC",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Gilead Sciences": {
+    "ticker": "GILD",
+    "dates": [
+      {
+        "month": 2,
+        "day": 15
+      },
+      {
+        "month": 8,
+        "day": 15
+      }
+    ]
+  },
+  "Dolby Laboratories": {
+    "ticker": "DLB",
+    "dates": [
+      {
+        "month": 5,
+        "day": 15
+      },
+      {
+        "month": 11,
+        "day": 15
+      }
+    ]
+  },
+  "Fiserv": {
+    "ticker": "FI",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 4,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      },
+      {
+        "month": 10,
+        "day": 1
+      }
+    ]
+  },
+  "Illumina": {
+    "ticker": "ILMN",
+    "dates": [
+      {
+        "month": 2,
+        "day": 1
+      },
+      {
+        "month": 8,
+        "day": 1
+      }
+    ]
+  },
+  "Intercontinental exchange": {
+    "ticker": "ICE",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Lam Research": {
+    "ticker": "LRCX",
+    "dates": [
+      {
+        "month": 4,
+        "day": 30
+      },
+      {
+        "month": 10,
+        "day": 31
+      }
+    ]
+  },
+  "Marqeta": {
+    "ticker": "MQ",
+    "dates": [
+      {
+        "month": 5,
+        "day": 16
+      },
+      {
+        "month": 11,
+        "day": 16
+      }
+    ]
+  },
+  "Americold": {
+    "ticker": "COLD",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "PNC": {
+    "ticker": "PNC",
+    "dates": [
+      {
+        "month": 1,
+        "day": 1
+      },
+      {
+        "month": 7,
+        "day": 1
+      }
+    ]
+  },
+  "Raymond James": {
+    "ticker": "RJF",
+    "dates": [
+      {
+        "month": 3,
+        "day": 1
+      },
+      {
+        "month": 6,
+        "day": 1
+      },
+      {
+        "month": 9,
+        "day": 1
+      },
+      {
+        "month": 12,
+        "day": 1
+      }
+    ]
+  },
+  "Smart Sheet": {
+    "ticker": "SMAR",
+    "dates": [
+      {
+        "month": 3,
+        "day": 24
+      },
+      {
+        "month": 9,
+        "day": 24
+      }
+    ]
+  },
+  "Thomson Reuters": {
+    "ticker": "TRI",
+    "dates": [
+      {
+        "month": 9,
+        "day": 30
+      },
+      {
+        "month": 12,
+        "day": 31
+      },
+      {
+        "month": 3,
+        "day": 31
+      },
+      {
+        "month": 6,
+        "day": 30
+      }
+    ]
+  },
   "Transunion": {
     "ticker": "TRU",
     "dates": [
@@ -10,8 +589,7 @@
         "month": 7,
         "day": 1
       }
-    ],
-    "download": "2024-05-14"
+    ]
   },
   "datadog": {
     "ticker": "DDOG",
@@ -24,8 +602,7 @@
         "month": 11,
         "day": 15
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Charles Schwab": {
     "ticker": "SCHW",
@@ -38,8 +615,7 @@
         "month": 8,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Factset": {
     "ticker": "FDS",
@@ -60,8 +636,7 @@
         "month": 12,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Seagate": {
     "ticker": "STX",
@@ -74,8 +649,7 @@
         "month": 8,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Teradata": {
     "ticker": "TDC",
@@ -88,8 +662,7 @@
         "month": 8,
         "day": 31
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Cadence Design Systems": {
     "ticker": "CDNS",
@@ -102,8 +675,7 @@
         "month": 8,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Texas Instruments": {
     "ticker": "TXN",
@@ -124,8 +696,7 @@
         "month": 12,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Applied Materials": {
     "ticker": "AMAT",
@@ -138,8 +709,7 @@
         "month": 8,
         "day": 31
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "LiveRamp": {
     "ticker": "RAMP",
@@ -152,8 +722,7 @@
         "month": 11,
         "day": 30
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Splunk": {
     "ticker": "SPLK",
@@ -166,8 +735,7 @@
         "month": 12,
         "day": 15
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Nike": {
     "ticker": "NKE",
@@ -180,8 +748,7 @@
         "month": 9,
         "day": 30
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Juniper Networks": {
     "ticker": "JNPR",
@@ -194,8 +761,7 @@
         "month": 7,
         "day": 31
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "intel": {
     "ticker": "INTC",
@@ -208,8 +774,7 @@
         "month": 8,
         "day": 19
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "hubspot": {
     "ticker": "HUBS",
@@ -222,8 +787,7 @@
         "month": 12,
         "day": 31
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "HPE": {
     "ticker": "HPE",
@@ -236,8 +800,7 @@
         "month": 10,
         "day": 31
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "HP": {
     "ticker": "HPQ",
@@ -250,8 +813,7 @@
         "month": 11,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Epam": {
     "ticker": "EPAM",
@@ -264,8 +826,7 @@
         "month": 10,
         "day": 31
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Akamai": {
     "ticker": "AKAM",
@@ -278,8 +839,7 @@
         "month": 12,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "NetApp": {
     "ticker": "NTAP",
@@ -292,8 +852,7 @@
         "month": 11,
         "day": 30
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Nvidia": {
     "ticker": "NVDA",
@@ -306,8 +865,7 @@
         "month": 8,
         "day": 31
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Autodesk": {
     "ticker": "ADSK",
@@ -320,8 +878,7 @@
         "month": 4,
         "day": 1
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Workday": {
     "ticker": "WDAY",
@@ -334,8 +891,7 @@
         "month": 12,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Paypal": {
     "ticker": "PYPL",
@@ -348,8 +904,7 @@
         "month": 11,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "ElectronicArts": {
     "ticker": "EA",
@@ -362,8 +917,7 @@
         "month": 8,
         "day": 15
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "ServiceNow": {
     "ticker": "NOW",
@@ -376,8 +930,7 @@
         "month": 8,
         "day": 1
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Adobe": {
     "ticker": "ADBE",
@@ -390,8 +943,7 @@
         "month": 12,
         "day": 31
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Ebay": {
     "ticker": "EBAY",
@@ -404,8 +956,7 @@
         "month": 11,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Tesla": {
     "ticker": "TSLA",
@@ -418,8 +969,7 @@
         "month": 9,
         "day": 1
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Microsoft": {
     "ticker": "MSFT",
@@ -440,8 +990,7 @@
         "month": 10,
         "day": 1
       }
-    ],
-    "download": "2023-12-04"
+    ]
   },
   "Apple": {
     "ticker": "AAPL",
@@ -454,8 +1003,7 @@
         "month": 7,
         "day": 31
       }
-    ],
-    "download": "2023-12-04"
+    ]
   },
   "Lyft": {
     "ticker": "LYFT",
@@ -468,8 +1016,7 @@
         "month": 11,
         "day": 15
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Oracle": {
     "ticker": "ORCL",
@@ -482,22 +1029,20 @@
         "month": 10,
         "day": 1
       }
-    ],
-    "download": "2023-12-04"
+    ]
   },
   "DocuSign": {
     "ticker": "DOCU",
     "dates": [
       {
         "month": 4,
-        "day": 10
+        "day": 5
       },
       {
         "month": 10,
-        "day": 10
+        "day": 5
       }
-    ],
-    "download": "2023-12-05"
+    ]
   },
   "Okta": {
     "ticker": "OKTA",
@@ -510,8 +1055,7 @@
         "month": 12,
         "day": 20
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Equinix": {
     "ticker": "EQIX",
@@ -524,8 +1068,7 @@
         "month": 8,
         "day": 15
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Accenture": {
     "ticker": "ACN",
@@ -538,8 +1081,7 @@
         "month": 11,
         "day": 1
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Motorola": {
     "ticker": "MSI",
@@ -552,8 +1094,7 @@
         "month": 9,
         "day": 30
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Salesforce": {
     "ticker": "CRM",
@@ -566,8 +1107,7 @@
         "month": 12,
         "day": 15
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Block": {
     "ticker": "SQ",
@@ -580,8 +1120,7 @@
         "month": 11,
         "day": 15
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Comcast": {
     "ticker": "CMCSA",
@@ -594,8 +1133,7 @@
         "month": 10,
         "day": 1
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Arista": {
     "ticker": "ANET",
@@ -608,8 +1146,7 @@
         "month": 8,
         "day": 15
       }
-    ],
-    "download": "2023-11-18"
+    ]
   },
   "Udemy": {
     "ticker": "UDMY",
@@ -622,8 +1159,7 @@
         "month": 11,
         "day": 20
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "CloudFare": {
     "ticker": "NET",
@@ -636,8 +1172,7 @@
         "month": 11,
         "day": 15
       }
-    ],
-    "download": "2023-12-30"
+    ]
   },
   "Gitlab": {
     "ticker": "GTLB",
@@ -650,7 +1185,6 @@
         "month": 11,
         "day": 30
       }
-    ],
-    "download": "2023-12-30"
+    ]
   }
 }
