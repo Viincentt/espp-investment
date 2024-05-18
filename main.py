@@ -10,6 +10,7 @@ from matplotlib.pyplot import cm
 import pdb
 import pandas as pd
 import numpy as np
+from argparse import ArgumentParser
 
 """
         "Arista": { 
@@ -36,6 +37,28 @@ MONTH = "month"
 DAY = "day"
 CLOSE = "Close"
 
+parser = ArgumentParser()
+parser.add_argument(
+    "-w",
+    "--window",
+    type=int,
+    default=60,
+    required=False,
+    metavar="N",
+    help="Window size N in days to analyze after each ESPP date. Default: 60",
+)
+parser.add_argument(
+    "-t",
+    "--ticker",
+    dest="tickers",
+    type=str,
+    required=False,
+    metavar="TICKER",
+    action="append",
+    help="Company ticker to analyze.",
+)
+optionArgs = parser.parse_args()
+
 
 def plotIt(companyName, df, color):
     ax = df[CLOSE].plot(c=color, label=companyName)
@@ -46,7 +69,7 @@ def plotIt(companyName, df, color):
 def stats(l):
     if len(l) < 2:
         # If series has less than 2 elements, return 0 as there's no increase
-        return 0, 0, 0, 0, 0
+        return 0, 0, 0, 0, 0, 0
 
     maxIncrease = 0
     minValue = l.iloc[0]
@@ -74,14 +97,14 @@ def stats(l):
     stopLoss = round(maxDecrease / maxValue, 2)
     nbDaysBuy = (l.index[lowValueIdx] - l.index[0]).days
     nbDaysSell = (l.index[highValueIdx] - l.index[lowValueIdx]).days
-    return nbDaysBuy, buyAt, nbDaysSell, sellAt, stopLoss
+    return nbDaysBuy, buyAt, nbDaysSell, sellAt, stopLoss, maxDecrease
 
 
 def printHeader(company):
     print(f"{company[TICKER]:>4}:", end=" ")
     for date in company[DATES]:
         print(
-            f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^20}", end="    "
+            f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^27}", end="    "
         )
     print()
 
@@ -95,11 +118,11 @@ def getMask(company, stock, lookBack=6):
         for date in company[DATES]:
             esppDate = datetime(year, date[MONTH], date[DAY])
             # TODO fix window range
-            curMask = (stock.index >= esppDate - timedelta(days=1)) & (
-                stock.index <= esppDate + timedelta(days=60)
+            curMask = (stock.index >= esppDate) & (
+                stock.index <= esppDate + timedelta(days=optionArgs.window)
             )
-            a, b, c, d, e = stats(stock.loc[curMask, CLOSE])
-            print(f"{a:2} {-b:4.0%} {c:2} {d:3.0%} {-e:4.0%}", end="    ")
+            a, b, c, d, e, f = stats(stock.loc[curMask, CLOSE])
+            print(f"{-b:4.0%}({a:2}) {d:3.0%}({c:2}) {-e:4.0%}({f:4.2f})", end="    ")
             mask |= curMask
         print()
     print()
@@ -118,15 +141,29 @@ def within(company, timeDuration):
     )
 
 
+def printHelper():
+    print(
+        "buy at -x%(after n days) and sell at +y%(after m days) and accept -z% loss(absolute value)."
+    )
+
+
 def main():
     dataFilename = "data.json"
     with open(dataFilename, "r") as file:
         companies = json.load(file)
 
-    fromNow = timedelta(days=15)  # TODO here
-    companies = {
-        name: comp for name, comp in companies.items() if within(comp, fromNow)
-    }
+    fromNow = timedelta(days=10)  # TODO here
+    # TODO fix below NoneType
+    if optionArgs.tickers != None:
+        companies = {
+            name: comp
+            for name, comp in companies.items()
+            if comp[TICKER] in map(str.upper, optionArgs.tickers)
+        }
+    else:
+        companies = {
+            name: comp for name, comp in companies.items() if within(comp, fromNow)
+        }
     colors = iter(cm.rainbow(np.linspace(0, 1, len(companies))))
 
     # plot
@@ -141,18 +178,9 @@ def main():
         stock.loc[~mask, CLOSE] = None
         plotIt(company[TICKER], stock, color)
 
-    print("buy after n days at -x% and sell after m days at +y% and accept -z% loss.")
+    printHelper()
     plt.show()
 
 
-# if ticker process that ticker
-# elif lookWindow process all tickers in window
-# else use default lookWindow
-
-# TODO add argument parser --stockTicker --lookWindow (may be more/less 2months)
-"""
---ticker -t
---analyzeStart default = 1
-"""
 if __name__ == "__main__":
     main()
