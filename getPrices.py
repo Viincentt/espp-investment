@@ -21,11 +21,11 @@ def main():
     parser.add_argument(price, help="Current price of stock")
     parser.add_argument(
         TP,
-        help="Take Profit percentage. Use lowest historical profit - 1% to maximize chances to hit",
+        help="Take Profit percentage. Use lowest historical profit - 1%% to maximize chances to hit",
     )
     parser.add_argument(
         SL,
-        help="Stop Loss percentage. Use highest historical loss + 1% to maximize space for errors",
+        help="Stop Loss percentage. Use highest historical loss + 1%% to maximize space for errors",
     )
     parser.add_argument(
         "-l",
