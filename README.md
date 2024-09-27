@@ -10,6 +10,6 @@ It also allows look up on a specific company via its official stock symbol/ticke
 
 Each segments represent the stock price starting on their respective exercise date.
 
-![Arista Networks stock](anet.png "ANET")
+![Arista Networks stock](images/anet.png "ANET")
 
-![Gitlab stock](gtlb.png "GTLB")
+![Gitlab stock](images/gtlb.png "GTLB")
