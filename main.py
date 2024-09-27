@@ -38,7 +38,8 @@ DAY = "day"
 CLOSE = "Close"
 
 parser = ArgumentParser()
-parser.add_argument(
+group = parser.add_mutually_exclusive_group()
+group.add_argument(
     "-w",
     "--window",
     type=int,
@@ -47,7 +48,15 @@ parser.add_argument(
     metavar="N",
     help="Window size N in days to analyze after each ESPP date. Default: 60",
 )
-parser.add_argument(
+group.add_argument(
+    "-q",
+    "--quiet",
+    dest="quiet",
+    action="store_true",
+    help="Only list upcoming companies. Default: False",
+)
+group = parser.add_mutually_exclusive_group()
+group.add_argument(
     "-t",
     "--ticker",
     dest="tickers",
@@ -56,6 +65,15 @@ parser.add_argument(
     metavar="TICKER",
     action="append",
     help="Company ticker to analyze.",
+)
+group.add_argument(
+    "-c",
+    "--coming",
+    type=int,
+    default=7,
+    required=False,
+    metavar="N",
+    help="Look up companies which have ESPP date coming within N days. Default: 7",
 )
 optionArgs = parser.parse_args()
 
@@ -100,11 +118,12 @@ def stats(l):
     return nbDaysBuy, buyAt, nbDaysSell, sellAt, stopLoss, maxDecrease
 
 
-def printHeader(company):
+def printHeader(company, spacing=27):
     print(f"{company[TICKER]:>4}:", end=" ")
     for date in company[DATES]:
         print(
-            f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^27}", end="    "
+            f"{str(date[DAY]) + calendar.month_name[date[MONTH]][:3]:^{spacing}}",
+            end="    ",
         )
     print()
 
@@ -117,7 +136,6 @@ def getMask(company, stock, lookBack=6):
         print(year, end=": ")
         for date in company[DATES]:
             esppDate = datetime(year, date[MONTH], date[DAY])
-            # TODO fix window range
             curMask = (stock.index >= esppDate) & (
                 stock.index <= esppDate + timedelta(days=optionArgs.window)
             )
@@ -131,7 +149,7 @@ def getMask(company, stock, lookBack=6):
 
 def within(company, timeDuration):
     today = datetime.now()
-    xTimeAgo = today - timedelta(days=5)  # TODO here
+    xTimeAgo = today - timedelta(days=1)
     xTimeFromNow = today + timeDuration
     return any(
         xTimeAgo <= datetime(today.year, date[MONTH], date[DAY]) <= xTimeFromNow
@@ -147,13 +165,30 @@ def printHelper():
     )
 
 
+def sanityCheck(comps):
+    uniqueTickers = set()
+    for name, comp in comps.items():
+        if comp[TICKER] in uniqueTickers:
+            raise ValueError("tickers not unique")
+        uniqueTickers.add(comp[TICKER])
+        for date in comp[DATES]:
+            if DAY not in date:
+                raise KeyError("Missing day")
+            if MONTH not in date:
+                raise KeyError("Missing month")
+            if 1 > date[MONTH] or date[MONTH] > 12:
+                raise ValueError("Invalid month")
+            if date[DAY] < 1 or date[DAY] > 31:
+                raise ValueError("Invalid day")
+
+
 def main():
     dataFilename = "data.json"
     with open(dataFilename, "r") as file:
         companies = json.load(file)
 
-    fromNow = timedelta(days=10)  # TODO here
-    # TODO fix below NoneType
+    sanityCheck(companies)
+
     if optionArgs.tickers != None:
         companies = {
             name: comp
@@ -161,9 +196,19 @@ def main():
             if comp[TICKER] in map(str.upper, optionArgs.tickers)
         }
     else:
+        fromNow = timedelta(days=optionArgs.coming)
         companies = {
             name: comp for name, comp in companies.items() if within(comp, fromNow)
         }
+
+    if len(companies) == 0:
+        print("Nothing to show")
+        return
+    if optionArgs.quiet:
+        for name, company in companies.items():
+            printHeader(company, 5)
+        return
+
     colors = iter(cm.rainbow(np.linspace(0, 1, len(companies))))
 
     # plot
@@ -182,5 +227,6 @@ def main():
     plt.show()
 
 
+# TODO show data until today not until previous year...
 if __name__ == "__main__":
     main()

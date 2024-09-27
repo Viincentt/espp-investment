@@ -1,4 +1,93 @@
 {
+  "Citizens Bank":{
+    "ticker":"CFG",
+    "dates":[
+    {"month":3, "day":31},
+    {"month":6, "day":30},
+    {"month":9, "day":30},
+    {"month":12, "day":31}
+    ]
+},
+  "Genpact":{
+    "ticker":"G",
+    "dates":[
+    {"month":2, "day":28},
+    {"month":5, "day":31},
+    {"month":8, "day":31},
+    {"month":11, "day":30}
+    ]
+},
+  "SPS Commerce":{
+    "ticker":"SPSC",
+    "dates":[
+    {"month":1, "day":1},
+    {"month":7, "day":1}
+    ]
+},
+  "Nelnet":{
+    "ticker":"NNI",
+    "dates":[
+    {"month":1, "day":1},
+    {"month":1, "day":1},
+    {"month":1, "day":1},
+    {"month":1, "day":1}
+    ]
+},
+  "Agilent Technologies":{
+    "ticker":"A",
+    "dates":[
+    {"month":4, "day":30},
+    {"month":10, "day":31}
+    ]
+},
+  "Irobot":{
+    "ticker":"IRBT",
+    "dates":[
+    {"month":5, "day":14},
+    {"month":11, "day":14}
+    ]
+},
+  "Irythm":{
+    "ticker":"IRTC",
+    "dates":[
+    {"month":5, "day":31},
+    {"month":11, "day":30}
+    ]
+},
+  "NXP Semiconductor":{
+    "ticker":"NXPI",
+    "dates":[
+    {"month":2, "day":28},
+    {"month":8, "day":31}
+    ]
+},
+  "Moderna":{
+    "ticker":"MRNA",
+    "dates":[
+    {"month":5, "day":31},
+    {"month":11, "day":30}
+    ]
+},
+  "Guardant Health":{
+    "ticker":"GH",
+    "dates":[
+    {"month":5, "day":15},
+    {"month":11, "day":15}
+    ]
+},
+  "Expeditors International":{
+    "ticker":"EXPD",
+    "dates":[
+    {"month":7, "day":31}
+    ]
+},
+  "Calamp":{
+    "ticker":"CAMP",
+    "dates":[
+    {"month":2, "day":1},
+    {"month":8, "day":1}
+    ]
+},
   "Yelp":{
     "ticker":"YELP",
     "dates":[
@@ -297,12 +386,12 @@
     "ticker": "CIEN",
     "dates": [
       {
-        "month": 5,
-        "day": 30
+        "month": 6,
+        "day": 1
       },
       {
-        "month": 11,
-        "day": 30
+        "month": 12,
+        "day": 1
       }
     ]
   },
@@ -722,12 +811,12 @@
     "ticker": "RAMP",
     "dates": [
       {
-        "month": 5,
-        "day": 31
+        "month": 6,
+        "day": 1
       },
       {
-        "month": 11,
-        "day": 30
+        "month": 12,
+        "day": 1
       }
     ]
   },
@@ -891,12 +980,12 @@
     "ticker": "WDAY",
     "dates": [
       {
-        "month": 6,
-        "day": 1
+        "month": 5,
+        "day": 31
       },
       {
-        "month": 12,
-        "day": 1
+        "month": 11,
+        "day": 30
       }
     ]
   },
