@@ -1,4 +1,11 @@
 {
+  "Yelp":{
+    "ticker":"YELP",
+    "dates":[
+    {"month":5, "day":31},
+    {"month":11, "day":30}
+    ]
+  },
   "Viasat": {
     "ticker": "VSAT",
     "dates": [
@@ -364,11 +371,11 @@
     "dates": [
       {
         "month": 5,
-        "day": 21
+        "day": 1
       },
       {
         "month": 11,
-        "day": 21
+        "day": 1
       }
     ]
   },
