@@ -10,6 +10,11 @@ It also allows look up on a specific company via its official stock symbol/ticke
 
 Each segments represent the stock price starting on their respective exercise date.
 
+`python main.py`
+![Upcoming stocks](images/default.png "Default")
+
+`python main.py --ticker anet`
 ![Arista Networks stock](images/anet.png "ANET")
 
+`python main.py --ticker gtlb`
 ![Gitlab stock](images/gtlb.png "GTLB")
